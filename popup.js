@@ -1,15 +1,34 @@
 // functionality for the timer
 
-// GITHUB TESTER //
+let tempMin;
+let tempSec;
 
-// GITHUB TEST 2//
+// window.addEventListener('blur', () => {
+//   chrome.storage.sync.set({'setMin': tempMin, 'setSec': tempSec}, () => {
+//     console.log(tempMin);
+//   })
+// })
+// const setChromeData = () => {
+//   chrome.storage.sync.set({'setMin': tempMin, 'setSec': tempSec}, () => {
+//     console.log(tempMin);
+//   });
+// }
+ 
+// setTimeout(setChromeData,1000);
+
+// document.addEventListener('DOMContentLoaded', () => {
+//   chrome.storage.sync.get(['setMin'], (result) => {
+//     if (Number(result.setMin) < 25) timer.pomodoro = Number(result.setMin);
+//     console.log('setMin', result.setMin);
+//   })
+// })
 
 
 
 const timer = {
     pomodoro: 1,
-    shortBreak: 5,
-    longBreak: 15,
+    shortBreak: 1,
+    longBreak: 1,
     longBreakInterval: 4,
     sessions: 0,
   };
@@ -97,8 +116,11 @@ const timer = {
     const sec = document.getElementById('js-seconds');
     min.textContent = minutes;
     sec.textContent = seconds;
+
+    tempMin = minutes;
+    tempSec = seconds;
   
-    const text = timer.mode === 'pomodoro' ? 'Get back to work!' : 'Take a break!';
+    const text = timer.mode === 'pomodoro' ? 'Study Time' : 'Take a break!';
     document.title = `${minutes}:${seconds} — ${text}`; // updates the title to fillow the timer
   
     const progress = document.getElementById('js-progress');
@@ -119,13 +141,16 @@ const timer = {
       .querySelectorAll('button[data-mode]')
       .forEach(e => e.classList.remove('active'));
     document.querySelector(`[data-mode="${mode}"]`).classList.add('active');
-    // document.body.style.backgroundColor = `var(--${mode})`;
     document
     .getElementById('js-progress')
     .setAttribute('max', timer.remainingTime.total); // adjusts progress bar
   
   
     updateClock();
+    if (mode !== 'pomodoro') window.open("BreakTime.html");
+    else {
+      window.open("studyAlert.html")
+    }
   }
   
   function handleMode(event) {

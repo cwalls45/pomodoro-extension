@@ -3,17 +3,22 @@
   "description": "Pomodoro Study Technique Counter",
   "version": "1.0",
   "manifest_version": 2,
+  "chrome_url_overrides": {
+    "newtab": "popup.html"
+  },
+  "browser_action": {
+    "default_icon": "assets/tomato.png",
+    "default_popup": "popup.html",
+    "default_title": "Pomodoro"
+  },
   "background": {
     "background": true,
-    "scripts": ["./background.js"]
+    "scripts": [
+      "./background.js"
+    ]
   },
-  "options_page": "./options.html",
-  "browser_action" : {
-    "default_icon": "assets/tomato.png", //-- this will be our tomato icon, found in the files folder
-  "default_popup": "popup.html",
-  "default_title": "Pomodoro"
-  },
-  "permissions": ["contextMenus","activeTab"]
+  "permissions": [
+    "tabs",
+    "notifications"
+  ]
 }
-
-
