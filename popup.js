@@ -147,7 +147,7 @@ const timer = {
   
   
     updateClock();
-    if (mode !== 'pomodoro') window.open("BreakTime.html");
+    if (mode !== 'pomodoro') window.open("breakAlert.html");
     else {
       window.open("studyAlert.html")
     }
@@ -165,11 +165,3 @@ const timer = {
   document.addEventListener('DOMContentLoaded', () => {
     switchMode('pomodoro');
   });
-
-//   function shortImg(){
-//     document.querySelector('#shortb').classList.toggle('hidden');
-//   }
-
-//   function toggleImage2(){
-//     document.querySelector('#longb').classList.toggle('hidden');
-//   }
