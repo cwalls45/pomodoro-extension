@@ -165,3 +165,4 @@ const timer = {
   document.addEventListener('DOMContentLoaded', () => {
     switchMode('pomodoro');
   });
+ // test
