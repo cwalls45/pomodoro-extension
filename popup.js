@@ -31,6 +31,7 @@ const timer = {
     longBreak: 1,
     longBreakInterval: 4,
     sessions: 0,
+    pageLaunch: true,
   };
   
   let interval;
@@ -147,8 +148,14 @@ const timer = {
   
   
     updateClock();
+    // determines which page is launched when timer reaches 0
     if (mode !== 'pomodoro') window.open("breakAlert.html");
     else {
+      // checks to see if this is the first time page has been launched
+      if (timer.pageLaunch === true) {
+        timer.pageLaunch = false;
+        return;
+      }
       window.open("studyAlert.html")
     }
   }
